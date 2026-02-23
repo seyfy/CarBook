@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
 {
-	public class GetCarWithBrandQueryHandler
+	public class GetBlogWithBrandQueryHandler
 	{
 		private readonly ICarRepository _repository;
 
-		public GetCarWithBrandQueryHandler(ICarRepository repository)
+		public GetBlogWithBrandQueryHandler(ICarRepository repository)
 		{
 			_repository = repository;
 		}

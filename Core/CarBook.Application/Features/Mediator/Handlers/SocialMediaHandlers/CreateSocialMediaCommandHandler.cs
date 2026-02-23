@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
-	public class CreateServiceCommandHandler : IRequestHandler<CreateSocialMediaCommand>
+	public class CreateSocailMediaCommandHandler : IRequestHandler<CreateSocialMediaCommand>
 	{
 		private readonly IRepository<SocialMedia> _repository;
 
-		public CreateServiceCommandHandler(IRepository<SocialMedia> repository)
+		public CreateSocailMediaCommandHandler(IRepository<SocialMedia> repository)
 		{
 			_repository = repository;
 		}

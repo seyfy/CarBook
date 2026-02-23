@@ -18,7 +18,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.LocationHandlers
 
 		public GetLocationQueryHandler(IRepository<Location> repository)
 		{
-			_repository = repository;
+            _repository = repository;
 		}
 
 		public async Task<List<GetLocationQueryResult>> Handle(GetLocationQuery request, CancellationToken cancellationToken)
