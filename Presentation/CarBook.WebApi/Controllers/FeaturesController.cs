@@ -41,7 +41,7 @@ namespace CarBook.WebApi.Controllers
 			return Ok("Özellik Başarıyla Eklendi");
 		}
 
-		[HttpDelete]
+		[HttpDelete("{id}")]
 
 		public async Task<IActionResult> RemoveFeature(int id)
 		{
