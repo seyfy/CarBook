@@ -24,11 +24,11 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             Random random = new Random();
             var client = _httpClientFactory.CreateClient();
             #region İstatistik1
-            var responseMessage = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCount/");
-            if (responseMessage.IsSuccessStatusCode)
+            var responseMessage1 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCount/");
+            if (responseMessage1.IsSuccessStatusCode)
             {
                 int v1 = random.Next(0, 101);
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var jsonData = await responseMessage1.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData);
                 ViewBag.v = values.carCount;
                 ViewBag.v1 = v1;
@@ -37,7 +37,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik2
             var responseMessage2 = await client.GetAsync("https://localhost:7182/api/Statistics/GetLocationCount/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage2.IsSuccessStatusCode)
             {
                 int locationCountRandom = random.Next(0, 101);
                 var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
@@ -49,7 +49,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik3
             var responseMessage3 = await client.GetAsync("https://localhost:7182/api/Statistics/GetAuthorCount/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage3.IsSuccessStatusCode)
             {
                 int authorCountRandom = random.Next(0, 101);
                 var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
@@ -61,7 +61,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik4
             var responseMessage4 = await client.GetAsync("https://localhost:7182/api/Statistics/GetBlogCount/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage4.IsSuccessStatusCode)
             {
                 int blogCountRandom = random.Next(0, 101);
                 var jsonData4 = await responseMessage4.Content.ReadAsStringAsync();
@@ -73,7 +73,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik5
             var responseMessage5 = await client.GetAsync("https://localhost:7182/api/Statistics/GetBrandCount/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage5.IsSuccessStatusCode)
             {
                 int brandCountRandom = random.Next(0, 101);
                 var jsonData5 = await responseMessage5.Content.ReadAsStringAsync();
@@ -85,7 +85,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik6
             var responseMessage6 = await client.GetAsync("https://localhost:7182/api/Statistics/GetAvgRentPriceForDaily/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage6.IsSuccessStatusCode)
             {
                 int avgRentPriceForDailyRandom = random.Next(0, 101);
                 var jsonData6 = await responseMessage6.Content.ReadAsStringAsync();
@@ -97,7 +97,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik7
             var responseMessage7 = await client.GetAsync("https://localhost:7182/api/Statistics/GetAvgRentPriceForWeekly/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage7.IsSuccessStatusCode)
             {
                 int avgRentPriceForWeeklyRandom = random.Next(0, 101);
                 var jsonData7 = await responseMessage7.Content.ReadAsStringAsync();
@@ -109,7 +109,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik8
             var responseMessage8 = await client.GetAsync("https://localhost:7182/api/Statistics/GetAvgRentPriceForMonthly/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage8.IsSuccessStatusCode)
             {
                 int avgRentPriceForMonthlyRandom = random.Next(0, 101);
                 var jsonData8 = await responseMessage8.Content.ReadAsStringAsync();
@@ -121,7 +121,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik9
             var responseMessage9 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCountByTransmissionIsAuto/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage9.IsSuccessStatusCode)
             {
                 int carCountByTransmissionIsAutoRandom = random.Next(0, 101);
                 var jsonData9 = await responseMessage9.Content.ReadAsStringAsync();
@@ -131,9 +131,33 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             }
             #endregion
 
+            #region İstatistik10
+            var responseMessage10 = await client.GetAsync("https://localhost:7182/api/Statistics/GetBrandNameByMaxCar/");
+            if (responseMessage10.IsSuccessStatusCode)
+            {
+                int brandNameByMaxCarRandom = random.Next(0, 101);
+                var jsonData10 = await responseMessage10.Content.ReadAsStringAsync();
+                var values10 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData10);
+                ViewBag.brandNameByMaxCar = values10.brandNameByMaxCar;
+                ViewBag.brandNameByMaxCarRandom = brandNameByMaxCarRandom;
+            }
+            #endregion
+
+            #region İstatistik11
+            var responseMessage11 = await client.GetAsync("https://localhost:7182/api/Statistics/GetBlogTitleByMaxBlogComment/");
+            if (responseMessage11.IsSuccessStatusCode)
+            {
+                int blogTitleByMaxBlogCommentRandom = random.Next(0, 101);
+                var jsonData11 = await responseMessage11.Content.ReadAsStringAsync();
+                var values11 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData11);
+                ViewBag.blogTitleByMaxBlogComment = values11.blogTitleByMaxBlogComment;
+                ViewBag.blogTitleByMaxBlogCommentRandom = blogTitleByMaxBlogCommentRandom;
+            }
+            #endregion
+
             #region İstatistik12
             var responseMessage12 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCountByKmSmallerThen1000/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage12.IsSuccessStatusCode)
             {
                 int carCountByKmSmallerThen1000Random = random.Next(0, 101);
                 var jsonData12 = await responseMessage12.Content.ReadAsStringAsync();
@@ -145,7 +169,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik13
             var responseMessage13 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCountByFuelGasolineOrDiesel/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage13.IsSuccessStatusCode)
             {
                 int carCountByFuelGasolineOrDieselRandom = random.Next(0, 101);
                 var jsonData13 = await responseMessage13.Content.ReadAsStringAsync();
@@ -157,13 +181,37 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
 
             #region İstatistik14
             var responseMessage14 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarCountByFuelElectric/");
-            if (responseMessage.IsSuccessStatusCode)
+            if (responseMessage14.IsSuccessStatusCode)
             {
                 int carCountByFuelElectricRandom = random.Next(0, 101);
                 var jsonData14 = await responseMessage14.Content.ReadAsStringAsync();
                 var values14 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData14);
                 ViewBag.carCountByFuelElectric = values14.carCountByFuelElectric;
                 ViewBag.carCountByFuelElectricRandom = carCountByFuelElectricRandom;
+            }
+            #endregion
+
+            #region İstatistik15
+            var responseMessage15 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarBrandNameAndModelByRentPriceDailyMax/");
+            if (responseMessage15.IsSuccessStatusCode)
+            {
+                int carBrandNameAndModelByRentPriceDailyMaxRandom = random.Next(0, 101);
+                var jsonData15 = await responseMessage15.Content.ReadAsStringAsync();
+                var values15 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData15);
+                ViewBag.carBrandNameAndModelByRentPriceDailyMax = values15.carBrandNameAndModelByRentPriceDailyMax;
+                ViewBag.carBrandNameAndModelByRentPriceDailyMaxRandom = carBrandNameAndModelByRentPriceDailyMaxRandom;
+            }
+            #endregion
+
+            #region İstatistik16
+            var responseMessage16 = await client.GetAsync("https://localhost:7182/api/Statistics/GetCarBrandNameAndModelByRentPriceDailyMin/");
+            if (responseMessage16.IsSuccessStatusCode)
+            {
+                int carBrandNameAndModelByRentPriceDailyMinRandom = random.Next(0, 101);
+                var jsonData16 = await responseMessage16.Content.ReadAsStringAsync();
+                var values16 = JsonConvert.DeserializeObject<ResultStatisticsDto>(jsonData16);
+                ViewBag.carBrandNameAndModelByRentPriceDailyMin = values16.carBrandNameAndModelByRentPriceDailyMin;
+                ViewBag.carBrandNameAndModelByRentPriceDailyMinRandom = carBrandNameAndModelByRentPriceDailyMinRandom;
             }
             #endregion
 
