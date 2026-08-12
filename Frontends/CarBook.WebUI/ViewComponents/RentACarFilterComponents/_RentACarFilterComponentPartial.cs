@@ -6,7 +6,7 @@ namespace CarBook.WebUI.ViewComponents.RentACarFilterComponents
     {
         public IViewComponentResult Invoke(string v)
         {
-            v = "Selam";
+            
             TempData["value"] = v;        
             return View();
         }

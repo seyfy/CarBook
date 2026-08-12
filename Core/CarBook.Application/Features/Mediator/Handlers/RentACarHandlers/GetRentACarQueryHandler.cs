@@ -5,6 +5,7 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,9 +23,12 @@ namespace CarBook.Application.Features.Mediator.Handlers.RentACarHandlers
         public async Task<List<GetRentACarQueryResult>> Handle(GetRentACarQuery request, CancellationToken cancellationToken)
         {
             var values =await _repository.GetByFilterAsync(x => x.LocationID == request.LocationID && x.Available == true);
-            var result =   values.Select(x => new GetRentACarQueryResult
+            var result =   values.Select(y => new GetRentACarQueryResult
             {
-                CarId=x.CarID
+                CarId=y.CarID,
+                Brand=y.Car.Brand.Name,
+                Model =y.Car.Model,
+                CoverImageUrl=y.Car.CoverImageUrl
             }).ToList();
             return result;
         }
