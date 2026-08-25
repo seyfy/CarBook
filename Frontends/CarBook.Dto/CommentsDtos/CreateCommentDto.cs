@@ -4,17 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook_Domain.Entities
+namespace CarBook.Dto.CommentsDtos
 {
-    public class Comment
+    public class CreateCommentDto
     {
-        public int CommentId { get; set; }
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }
+        public int BlogID { get; set; }
         public string Email { get; set; }
-        public int BlogId { get; set; }
-        public Blog Blog { get; set; }
-        
     }
 }
