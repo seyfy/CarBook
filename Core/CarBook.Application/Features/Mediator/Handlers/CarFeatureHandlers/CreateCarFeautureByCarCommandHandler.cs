@@ -1,0 +1,33 @@
+﻿using CarBook.Application.Features.Mediator.Commands.CarFeatureCommands;
+using CarBook.Application.Interfaces.CarFeatureInterfaces;
+using CarBook_Domain.Entities;
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CarBook.Application.Features.Mediator.Handlers.CarFeatureHandlers
+{
+    public class CreateCarFeautureByCarCommandHandler : IRequestHandler<CreateCarFeautureByCarCommand>
+    {
+        private readonly ICarFeatureRepository _repository;
+
+        public CreateCarFeautureByCarCommandHandler(ICarFeatureRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async  Task Handle(CreateCarFeautureByCarCommand request, CancellationToken cancellationToken)
+        {
+            _repository.CreateCarFeatureByCar(new CarFeature
+            {
+                Available = false,
+                CarID = request.CarID,
+                FeatureID = request.FeatureID
+            });
+              
+        }
+    }
+}
