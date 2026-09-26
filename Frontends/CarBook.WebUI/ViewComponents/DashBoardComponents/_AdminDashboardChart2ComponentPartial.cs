@@ -8,7 +8,8 @@ namespace CarBook.WebUI.ViewComponents.DashBoardComponents
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _AdminDashboardChart2ComponentPartial(IHttpClientFactory httpClientFactory)
+        public _AdminDashboardChart2ComponentPartial(
+            IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,14 +17,20 @@ namespace CarBook.WebUI.ViewComponents.DashBoardComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7182/api/Brands");
+
+            var responseMessage = await client.GetAsync(
+                "https://localhost:7182/api/Brands/GetBrandCarCounts");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultBrandDto>>(jsonData);
+
+                var values = JsonConvert.DeserializeObject<List<ResultBrandCarCountDto>>(jsonData);
+
                 return View(values);
             }
-            return View();
+
+            return View(new List<ResultBrandCarCountDto>());
         }
     }
 }

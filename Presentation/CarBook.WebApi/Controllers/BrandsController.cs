@@ -15,17 +15,19 @@ namespace CarBook.WebApi.Controllers
 		private readonly GetBrandQueryHandler _getBrandQueryHandler;
 		private readonly UpdateBrandCommandHandler _updateBrandCommandHandler;
 		private readonly RemoveBrandCommandHandler _removeBrandCommandHandler;
+        private readonly GetBrandCarCountQueryHandler _getBrandCarCountQueryHandler;
 
-		public BrandsController(CreateBrandCommandHandler createBrandCommandHandler, GetBrandByIdQueryHandler getBrandByIdQueryHandler, GetBrandQueryHandler getBrandQueryHandler, UpdateBrandCommandHandler updateBrandCommandHandler, RemoveBrandCommandHandler removeBrandCommandHandler)
-		{
-			_createBrandCommandHandler = createBrandCommandHandler;
-			_getBrandByIdQueryHandler = getBrandByIdQueryHandler;
-			_getBrandQueryHandler = getBrandQueryHandler;
-			_updateBrandCommandHandler = updateBrandCommandHandler;
-			_removeBrandCommandHandler = removeBrandCommandHandler;
-		}
+        public BrandsController(CreateBrandCommandHandler createBrandCommandHandler, GetBrandByIdQueryHandler getBrandByIdQueryHandler, GetBrandQueryHandler getBrandQueryHandler, UpdateBrandCommandHandler updateBrandCommandHandler, RemoveBrandCommandHandler removeBrandCommandHandler, GetBrandCarCountQueryHandler getBrandCarCountQueryHandler)
+        {
+            _createBrandCommandHandler = createBrandCommandHandler;
+            _getBrandByIdQueryHandler = getBrandByIdQueryHandler;
+            _getBrandQueryHandler = getBrandQueryHandler;
+            _updateBrandCommandHandler = updateBrandCommandHandler;
+            _removeBrandCommandHandler = removeBrandCommandHandler;
+            _getBrandCarCountQueryHandler = getBrandCarCountQueryHandler;
+        }
 
-		[HttpGet]
+        [HttpGet]
 
 		public async Task<IActionResult> BrandList()
 		{
@@ -63,6 +65,13 @@ namespace CarBook.WebApi.Controllers
 		{
 			await _updateBrandCommandHandler.Handle(command);
 			return Ok("Marka Bilgisi Güncellendi");
+		}
+
+		[HttpGet("GetBrandCarCounts")]
+		public async Task<IActionResult> GetBrandCarCount()
+		{
+			var values = await _getBrandCarCountQueryHandler.Handle();
+			return Ok(values);
 		}
 	}
 }

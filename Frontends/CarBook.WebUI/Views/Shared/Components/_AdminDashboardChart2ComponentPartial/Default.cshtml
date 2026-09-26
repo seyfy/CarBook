@@ -1,4 +1,5 @@
-﻿@model List<ResultBrandDto>
+﻿
+@model List<ResultBrandCarCountDto>
 
 <script src="~/chart.js"></script>
 
@@ -10,45 +11,12 @@
                 Araç Marka Sayıları
             </h4>
 
-            <canvas id="my2Chart" height="220"></canvas>
+            <canvas id="my2Chart" height="120"></canvas>
 
             <script>
-                var values = document.getElementById('my2Chart').getContext('2d');
-
-                var chart = new Chart(values, {
-                    type: 'pie',
-
-                    data: {
-                        labels: [
-                @foreach (var brand in Model)
-                {
-                    @: @Html.Raw(Json.Serialize(brand.name)),
-                }
-                                        ],
-
-                        datasets: [{
-                            label: 'Araç Marka Grafiği',
-
-                            data: [
-                @foreach (var brand in Model)
-                {
-                    @:1,
-                }
-                                            ],
-
-                            backgroundColor: [
-                @foreach (var brand in Model)
-                {
-                    @:getRandomColor(),
-                }
-                                            ],
-
-                            borderWidth: 1
-                        }]
-                    }
-                });
 
                 function getRandomColor() {
+
                     var letters = '0123456789ABCDEF';
                     var color = '#';
 
@@ -58,6 +26,49 @@
 
                     return color;
                 }
+
+                var values = document
+                    .getElementById('my2Chart')
+                    .getContext('2d');
+
+                var chart = new Chart(values, {
+
+                    type: 'pie',
+
+                    data: {
+
+                        labels: [
+                @foreach (var item in Model)
+                {
+                    @: '@item.BrandName',
+                }
+                                        ],
+
+                        datasets: [{
+
+                            label: 'Araç Marka Sayıları',
+
+                            data: [
+                @foreach (var item in Model)
+                {
+                    @: @item.CarCount,
+                }
+                                            ],
+
+                            backgroundColor: [
+                @foreach (var item in Model)
+                {
+                    @:getRandomColor(),
+                }
+                                            ],
+
+                            borderWidth: 1
+
+                        }]
+                    }
+
+                });
+
             </script>
 
         </div>
