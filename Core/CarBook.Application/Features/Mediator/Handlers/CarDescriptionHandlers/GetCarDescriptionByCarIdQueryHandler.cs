@@ -23,7 +23,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarDescriptionHandlers
 
         public async Task<GetCarDescriptionQueryResult> Handle(GetCarDescriptionByCarIdQuery request, CancellationToken cancellationToken)
         {
-            var values =  _repository.GetCarDescription(request.Id);
+            var values = await _repository.GetCarDescription(request.Id);
             return new GetCarDescriptionQueryResult
             {
                 CarDescriptionID = values.CarDescriptionID,
@@ -33,3 +33,5 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarDescriptionHandlers
         }
     }
 }
+
+

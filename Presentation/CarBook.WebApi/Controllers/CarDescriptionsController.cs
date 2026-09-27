@@ -21,7 +21,7 @@ namespace CarBook.WebApi.Controllers
 
         public async Task<IActionResult> CarDescriptionByCarId(int id)
         {
-            var values =  _mediator.Send(new GetCarDescriptionByCarIdQuery(id));
+            var values = await _mediator.Send(new GetCarDescriptionByCarIdQuery(id));
             return Ok(values);
         }
     }

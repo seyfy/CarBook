@@ -9,6 +9,6 @@ namespace CarBook.Application.Interfaces.CarDescriptionInterfaces
 {
     public interface ICarDescriptionRepository
     {
-        CarDescription GetCarDescription(int carId);
+        Task<CarDescription> GetCarDescription(int carId);
     }
 }

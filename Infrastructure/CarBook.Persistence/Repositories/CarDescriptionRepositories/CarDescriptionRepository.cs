@@ -1,6 +1,7 @@
 ﻿using CarBook.Application.Interfaces.CarDescriptionInterfaces;
 using CarBook.Persistence.Context;
 using CarBook_Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,12 @@ namespace CarBook.Persistence.Repositories.CarDescriptionRepositories
             _context = context;
         }
 
-        public CarDescription GetCarDescription(int carId)
-        {
-            var values = _context.CarDescriptions.Where(x => x.CarID == carId).FirstOrDefault();
-            return values;
-        }
-    }
+      
+
+		async Task<CarDescription> ICarDescriptionRepository.GetCarDescription(int carId)
+		{
+			var values = await _context.CarDescriptions.Where(x => x.CarID == carId).FirstOrDefaultAsync();
+			return values;
+		}
+	}
 }

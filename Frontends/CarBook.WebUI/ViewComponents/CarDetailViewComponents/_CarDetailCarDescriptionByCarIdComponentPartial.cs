@@ -15,6 +15,7 @@ namespace CarBook.WebUI.ViewComponents.CarDetailViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
+            ViewBag.carId = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:7182/api/CarDescriptions?id="+id);
             if (responseMessage.IsSuccessStatusCode)
